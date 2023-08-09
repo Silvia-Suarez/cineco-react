@@ -2,7 +2,9 @@ import logo from "../assets/images/logo_cineco.svg";
 import SearchInput from "./Inputs/SearchInput";
 import { OptionsButton } from "./Buttons";
 import Login from "./Login";
-export default function Navbar() {
+
+export default function Navbar({signOut, authkey}) {
+
   return (
     <>
       <div className=" lg:absolute lg:block hidden z-50 top-0 left-0 w-full h-24 bg-black">
@@ -26,7 +28,7 @@ export default function Navbar() {
               <SearchInput></SearchInput>
             </div>
             <div className="xl:ml-auto flex flex-col justify-center">
-              <Login></Login>
+              {authkey?.username ?<button className="flex cursor-pointer justify-center rounded-full py-3 px-6 font-roboto text-center text-sm font-medium tracking-wide bg-transparent border border-blue-principal text-blue-principal hover:text-white hover:bg-blue-principal" onClick={signOut}>Cerrar Sesión</button> : <Login></Login>}
             </div>
           </div>
         </div>
@@ -44,7 +46,7 @@ export default function Navbar() {
           />
         </div>
         <div className="w-1/3 flex justify-end pr-6">
-          <Login></Login>
+        {authkey?.username ?<button className="flex cursor-pointer justify-center rounded-full py-3 px-6 font-roboto text-center text-sm font-medium tracking-wide bg-transparent border border-blue-principal text-blue-principal hover:text-white hover:bg-blue-principal" onClick={signOut}>Cerrar Sesión</button> : <Login></Login>}
         </div>
       </div>
     </>
