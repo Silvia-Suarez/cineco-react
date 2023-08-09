@@ -5,172 +5,92 @@ import AltCard from "../components/AltCard";
 import MobileCard from "../components/MobileCard";
 import SearchInput from "../components/Inputs/SearchInput";
 import { PrincipalButton, OptionsButton } from "../components/Buttons";
+import { useEffect, useState } from "react";
 
-export async function getStaticProps() {
-  const response = await client.getEntries({
-    content_type: "peliculas",
-  });
-  return {
-    props: {
-      movies_array: response.items,
-    },
-  };
-}
 export default function Home() {
-  // const movies = movies_array;
-  const movies = [
-    {
-      fields: {
-        id_pelicula: "1",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
+  const [moviesBillboard, setMoviesBillboard] = useState([]);
+  const [moviesSooner, setMoviesSooner] = useState([]);
+
+  useEffect(() => {
+    async function getMovies() {
+      await client
+        .getEntries({ content_type: "peliculas" })
+        .then((response) => {
+          const { billboard, sooner } = response.items.reduce(
+            (result, item) => {
+              if (item.fields.pronto === false) {
+                result.billboard.push(item);
+              } else {
+                result.sooner.push(item);
+              }
+              return result;
             },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        duracion: 114,
-        clasificacion: "Para todo el Público",
-      },
-    },
-    {
-      fields: {
-        id_pelicula: "2",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-            },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        duracion: 114,
-        clasificacion: "Clasificación Por Confirmar",
-      },
-    },
-    {
-      fields: {
-        id_pelicula: "3",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-            },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        duracion: 114,
-        clasificacion: "Recomendada para Mayores de 12 años",
-      },
-    },
-    {
-      fields: {
-        id_pelicula: "4",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-            },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        clasificacion: "Exclusiva para Mayores de 15 años",
-      },
-    },
-    {
-      fields: {
-        id_pelicula: "5",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-            },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        duracion: 114,
-        clasificacion: "Para todo el Público",
-      },
-    },
-    {
-      fields: {
-        id_pelicula: "6",
-        titulo: "barbie",
-        titulo_original: "barbie",
-        portada: {
-          fields: {
-            file: {
-              fileName: "9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-            },
-          },
-        },
-        estreno: "20-Jul-2023",
-        genero: "comedia",
-        duracion: 114,
-        clasificacion: "Para todo el Público",
-      },
-    },
-  ];
+            { billboard: [], sooner: [] }
+          );
+          setMoviesBillboard(billboard);
+          setMoviesSooner(sooner);
+        });
+    }
+    getMovies();
+  }, []);
+
   const others = [
     {
-      id_pelicula: "1",
-      titulo: "barbie",
-      titulo_original: "barbie",
-      portada: "/9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-      estreno: "20-Jul-2023",
-      genero: "comedia",
-      duracion: 114,
-      clasificacion: "Para todo el Público",
+      fields: {
+        id: "1",
+        titulo: "Mary Cassatt: Pintando La Mujer Moderna",
+        portada: {
+          fields: {
+            file: {
+              url: "https://archivos-cms.cinecolombia.com/images/_aliases/poster_card/5/5/9/2/42955-9-esl-CO/46437e3f916f-480x670.jpg",
+            },
+          },
+        },
+        estreno: "20-Jul-2023",
+        genero: "Documental",
+      },
     },
     {
-      id_pelicula: "2",
-      titulo: "barbie",
-      titulo_original: "barbie",
-      portada: "/9f3f93604ed4-warner_barbie_cinecol_480x670.jpg",
-      estreno: "20-Jul-2023",
-      genero: "comedia",
-      duracion: 114,
-      clasificacion: "Clasificación Por Confirmar",
+      fields: {
+        id: "2",
+        titulo: "Vermeer: La Mayor Exposición",
+        portada: {
+          fields: {
+            file: {
+              url: "https://archivos-cms.cinecolombia.com/images/_aliases/poster_card/9/8/9/2/42989-1-esl-CO/6843ae778ba8-2_poster_480x670_vermeer.png",
+            },
+          },
+        },
+        estreno: "20-Jul-2023",
+        genero: "Documental",
+      },
     },
   ];
   const ophera = [
     {
-      id_pelicula: "1",
-      portada: "/bd7052b83b92-banners_600x400px_opera.jpg",
+      id: "1",
+      portada:
+        "https://archivos-cms.cinecolombia.com/images/7/3/5/6/16537-8-esl-CO/bd7052b83b92-banners_600x400px_opera.jpg",
     },
   ];
   const ballet = [
     {
-      id_pelicula: "1",
-      portada: "/9da627a01ae5-banners_600x400px_ballet.jpg",
+      id: "1",
+      portada:
+        "https://archivos-cms.cinecolombia.com/images/7/2/5/6/16527-15-esl-CO/9da627a01ae5-banners_600x400px_ballet.jpg",
     },
   ];
   const theatre = [
     {
-      id_pelicula: "1",
-      portada: "/d030b0977794-microsoftteams-image-51-.jpeg",
+      id: "1",
+      portada:
+        "https://archivos-cms.cinecolombia.com/images/5/4/5/6/16545-8-esl-CO/d030b0977794-microsoftteams-image-51-.png",
     },
   ];
 
   return (
     <>
-      <MainStructure>
+      <MainStructure movies={moviesBillboard}>
         <section className="hidden lg:block">
           <div className="px-6 xl:px-14 py-16">
             <div>
@@ -178,20 +98,9 @@ export default function Home() {
                 EN CARTELERA
               </p>
               <div className="grid grid-cols-3 xl:grid-cols-4 gap-y-5 xl:gap-x-6">
-                {movies.map((movie) => (
+                {moviesBillboard.map((movie) => (
                   <div key={movie?.fields?.id + "_pelicula"}>
-                    <Card
-                      id={movie?.fields?.id}
-                      title={movie?.fields?.titulo}
-                      o_title={movie?.fields?.titulo_original}
-                      image={
-                        "https:" + movie?.fields?.portada?.fields?.file?.url
-                      }
-                      date={movie?.fields?.estreno}
-                      gender={movie?.fields?.genero}
-                      duration={movie?.fields?.duracion}
-                      clasification={movie?.fields?.clasificacion}
-                    ></Card>
+                    <Card data={movie}></Card>
                   </div>
                 ))}
               </div>
@@ -202,20 +111,9 @@ export default function Home() {
             <div>
               <p className="text-lg font-roboto font-medium pb-10">PRONTO</p>
               <div className="grid grid-cols-3 xl:grid-cols-4 gap-y-5 xl:gap-x-6">
-                {movies.map((movie) => (
+                {moviesSooner.map((movie) => (
                   <div key={movie?.fields?.id + "_otros"}>
-                    <Card
-                      id={movie?.fields?.id}
-                      title={movie?.fields?.titulo}
-                      o_title={movie?.fields?.titulo_original}
-                      image={
-                        "https:" + movie?.fields?.portada?.fields?.file?.url
-                      }
-                      date={movie?.fields?.estreno}
-                      gender={movie?.fields?.genero}
-                      duration={movie?.fields?.duracion}
-                      clasification={movie?.fields?.clasificacion}
-                    ></Card>
+                    <Card data={movie}></Card>
                   </div>
                 ))}
               </div>
@@ -231,18 +129,8 @@ export default function Home() {
                 <p className=" pt-10 pb-5">Otros</p>
                 <div className=" grid grid-cols-2 gap-y-5 gap-x-6">
                   {others.map((movie) => (
-                    <div key={movie.id_pelicula + "_otros"}>
-                      <Card
-                        id={movie.id_pelicula}
-                        others={true}
-                        title={movie.titulo}
-                        o_title={movie.titulo_original}
-                        image={movie.portada}
-                        date={movie.estreno}
-                        gender={movie.genero}
-                        duration={movie.duracion}
-                        clasification={movie.clasificacion}
-                      ></Card>
+                    <div key={movie.fields.id + "_otros"}>
+                      <Card data={movie} others={true}></Card>
                     </div>
                   ))}
                 </div>
@@ -253,11 +141,8 @@ export default function Home() {
               <div className="w-1/2">
                 <p className=" pb-5 pt-10">Opera</p>
                 {ophera.map((movie) => (
-                  <div key={movie.id_pelicula + "_opera"}>
-                    <AltCard
-                      id={movie.id_pelicula}
-                      image={movie.portada}
-                    ></AltCard>
+                  <div key={movie.id + "_opera"}>
+                    <AltCard id={movie.id} image={movie.portada}></AltCard>
                   </div>
                 ))}
               </div>
@@ -266,22 +151,16 @@ export default function Home() {
               <div className="w-1/2">
                 <p className="text-lg font-medium pb-10">Ballet</p>
                 {ballet.map((movie) => (
-                  <div key={movie.id_pelicula + "_ballet"}>
-                    <AltCard
-                      id={movie.id_pelicula}
-                      image={movie.portada}
-                    ></AltCard>
+                  <div key={movie.id + "_ballet"}>
+                    <AltCard id={movie.id} image={movie.portada}></AltCard>
                   </div>
                 ))}
               </div>
               <div className="w-1/2">
                 <p className="text-lg font-medium pb-10">Teatro</p>
                 {theatre.map((movie) => (
-                  <div key={movie.id_pelicula + "_teatro"}>
-                    <AltCard
-                      id={movie.id_pelicula}
-                      image={movie.portada}
-                    ></AltCard>
+                  <div key={movie.id + "_teatro"}>
+                    <AltCard id={movie.id} image={movie.portada}></AltCard>
                   </div>
                 ))}
               </div>
@@ -298,13 +177,13 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full h-full flex flex-col">
-            {movies.map((movie) => (
+            {moviesBillboard.map((movie) => (
               <div key={movie?.fields?.id + "_pelicula"}>
                 <MobileCard
                   id={movie?.fields?.id}
                   title={movie?.fields?.titulo}
                   o_title={movie?.fields?.titulo_original}
-                  image={"/" + movie?.fields?.portada?.fields?.file?.fileName}
+                  image={"https:" + movie?.fields?.portada?.fields?.file?.url}
                   date={movie?.fields?.estreno}
                   gender={movie?.fields?.genero}
                   duration={movie?.fields?.duracion}

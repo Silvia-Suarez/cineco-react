@@ -1,10 +1,11 @@
+import blueLogo from "../assets/images/logo_cineco_blue.svg";
 export default function Footer() {
   return (
     <>
       <div className="bg-gray-principal text-gray-secondary pt-10 pb-16 w-full font-roboto text-xs hidden lg:flex">
         <div className="w-1/4 ">
           <img
-            src="/logo_cineco_blue.svg"
+            src={blueLogo}
             width={200}
             height={100}
             className="h-8 ml-10"
@@ -26,14 +27,23 @@ export default function Footer() {
             <div className=" text-right text-base space-x-4 cursor-pointer">
               <a
                 href="https://www.facebook.com/cinecolombiaoficial"
+                rel="noreferrer"
                 target="_blank"
               >
                 <i className=" hover:text-blue-terciary fab fa-facebook-square"></i>
               </a>
-              <a href="https://twitter.com/Cine_Colombia" target="_blank">
+              <a
+                href="https://twitter.com/Cine_Colombia"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i className=" hover:text-blue-terciary fab fa-twitter"></i>
               </a>
-              <a href="https://www.instagram.com/cinecolombia/" target="_blank">
+              <a
+                href="https://www.instagram.com/cinecolombia/"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i className=" hover:text-blue-terciary fab fa-instagram"></i>
               </a>
             </div>
@@ -43,7 +53,7 @@ export default function Footer() {
       <div className="bg-gray-principal text-gray-secondary pt-10 pb-16 w-full font-roboto text-xs lg:hidden flex flex-col">
         <div>
           <img
-            src="/logo_cineco_blue.svg"
+            src={blueLogo}
             width={200}
             height={100}
             className="h-6 mx-auto"
@@ -63,9 +73,27 @@ export default function Footer() {
         <div className="max-w-max mx-auto tracking-wider">
           Síguenos en redes sociales
           <div className=" text-center pt-3 text-base space-x-4 cursor-pointer">
-            <i className=" hover:text-blue-terciary fab fa-facebook-square"></i>
-            <i className=" hover:text-blue-terciary fab fa-twitter"></i>
-            <i className=" hover:text-blue-terciary fab fa-instagram"></i>
+            <a
+              href="https://www.facebook.com/cinecolombiaoficial"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i className=" hover:text-blue-terciary fab fa-facebook-square"></i>
+            </a>
+            <a
+              href="https://twitter.com/Cine_Colombia"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i className=" hover:text-blue-terciary fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/cinecolombia/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i className=" hover:text-blue-terciary fab fa-instagram"></i>
+            </a>
           </div>
         </div>
         <div className="text-center pt-10 w-full">

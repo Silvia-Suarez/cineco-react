@@ -8,13 +8,14 @@ import {withAuthenticator } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 Amplify.configure(awsconfig);
 
-const MainStructure = ({
+function MainStructure({
+  movies = [],
   showCarrouselTop = true,
   showCarrouselBot = true,
   user,
   signOut,
   children,
-}) => {
+}) {
   return (
     <>
       <div
@@ -24,7 +25,7 @@ const MainStructure = ({
       >
         <Navbar authkey={user} signOut={signOut}></Navbar>
         <section className="bg-white w-full lg:rounded-none rounded-t-3xl overflow-auto h-full scrollbar-none">
-          {showCarrouselTop && <CarouselTop />}
+          {showCarrouselTop && <CarouselTop movies={movies} />}
           {children}
           {showCarrouselBot && <CarouselBottom />}
           <Footer></Footer>
@@ -32,7 +33,7 @@ const MainStructure = ({
       </div>
     </>
   );
-};
+}
 
 
 export default withAuthenticator(MainStructure, {
