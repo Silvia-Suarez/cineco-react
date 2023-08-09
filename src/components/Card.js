@@ -1,14 +1,4 @@
-export default function Card({
-  title,
-  o_title,
-  id,
-  date,
-  clasification,
-  duration,
-  gender,
-  image,
-  others = false,
-}) {
+export default function Card({ data, others = false }) {
   const Label = ({ alert = false, children }) => {
     return (
       <>
@@ -32,18 +22,24 @@ export default function Card({
           className=" h-full font-roboto capitalize xl:w-80 w-64 px-5 py-4 flex flex-col tracking-wide"
         >
           <img
-            src={image}
+            src={"https:" + data?.fields?.portada?.fields?.file?.url}
             alt="Imagen-Pelicula-Otros"
             className="mx-auto w-full border rounded-md"
           />
           <div className=" h-1/3">
-            <p className=" text-xl pt-2 pb-1 font-noto font-medium ">{title}</p>
+            <p className=" text-xl pt-2 pb-1 font-noto font-medium ">
+              {data?.fields?.titulo}
+            </p>
             <div className=" text-xs font-medium pb-2 space-y-1">
               <p>
-                Estreno <span className="font-normal">{date}</span>
+                Estreno{" "}
+                <span className="font-normal">{data?.fields?.estreno}</span>
               </p>
               <p>
-                Género <span className="font-normal">{gender}</span>
+                Género{" "}
+                <span className="font-normal">
+                  {data?.fields?.clasificacion}
+                </span>
               </p>
             </div>
           </div>
@@ -55,26 +51,32 @@ export default function Card({
           className=" h-full font-roboto capitalize w-80 px-5 py-4 flex flex-col rounded-md tracking-wide"
         >
           <img
-            src={image}
+            src={"https:" + data?.fields?.portada?.fields?.file?.url}
             alt="Imagen-Pelicula"
             className="mx-auto w-full border rounded-md"
           />
           <div className=" h-1/3">
             <p className=" text-lg pt-2 pb-1 text-blue-principal font-medium ">
-              {title}
+              {data?.fields?.titulo}
             </p>
             <p className=" text-xs pb-1 font-medium">
-              Título en inglés: {o_title}
+              Título en inglés: {data?.fields?.titulo_original}
             </p>
             <div className=" text-xs pb-2 space-y-1">
-              <p>Estreno: {date}</p>
-              <p>Género: {gender}</p>
+              <p>Estreno: {data?.fields?.estreno}</p>
+              <p>Género: {data?.fields?.duracion}</p>
             </div>
             <div className="w-full text-xs flex flex-wrap h-28">
-              <Label alert={clasification.toLowerCase().includes("exclusiva")}>
-                {clasification}
+              <Label
+                alert={data?.fields?.clasificacion
+                  .toLowerCase()
+                  .includes("exclusiva")}
+              >
+                {data?.fields?.clasificacion}
               </Label>
-              {duration && <Label>{duration} Min</Label>}
+              {data?.fields?.duracion && (
+                <Label>{data?.fields?.duracion} Min</Label>
+              )}
             </div>
           </div>
         </div>

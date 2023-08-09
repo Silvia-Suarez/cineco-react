@@ -1,8 +1,10 @@
 import logo from "../assets/images/logo_cineco.svg";
 import SearchInput from "./Inputs/SearchInput";
 import { OptionsButton } from "./Buttons";
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <div className=" lg:absolute lg:block hidden z-50 top-0 left-0 w-full h-24 bg-black">
@@ -10,7 +12,7 @@ export default function Navbar() {
           <div className="ml-5 xl:ml-0 xl:w-1/5">
             <img
               src={logo}
-              // onClick={() => router.push("/")}
+              onClick={() => navigate("/")}
               className="cursor-pointer h-full xl:ml-auto py-2"
               alt="CineCol-logo"
             />
@@ -35,10 +37,8 @@ export default function Navbar() {
         <div className="w-1/3" />
         <div className="w-1/3  flex flex-col justify-center">
           <img
-            src="/logo_cineco.svg"
-            width={200}
-            height={200}
-            // onClick={() => router.push("/")}
+            src={logo}
+            onClick={() => navigate("/")}
             className="mx-auto h-7"
             alt="CineCol-logo"
           />
