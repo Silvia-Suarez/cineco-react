@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cineco-staging-193452-authRole",
+      "UnauthRoleArn": "arn:aws:iam::980443341523:role/amplify-cineco-staging-193452-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::980443341523:role/amplify-cineco-staging-193452-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cineco-staging-193452-deployment",
+      "UnauthRoleName": "amplify-cineco-staging-193452-unauthRole",
+      "StackName": "amplify-cineco-staging-193452",
+      "StackId": "arn:aws:cloudformation:us-east-1:980443341523:stack/amplify-cineco-staging-193452/7afc9880-3559-11ee-86ab-1202d1a02137",
+      "AmplifyAppId": "d2domy300gpgxx"
+    },
+    "categories": {
+      "auth": {
+        "Cineco": {}
+      }
+    }
+  }
+}
