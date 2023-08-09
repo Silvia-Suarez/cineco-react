@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import MainStructure from "../components/MainStructure";
 import Input from "../components/Inputs/Input";
 import PasswordInput from "../components/Inputs/PasswordInput";
 import { SecondaryButton } from "../components/Buttons";
 
-export default function LoginPage({}) {
+export default function LoginPage() {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
 

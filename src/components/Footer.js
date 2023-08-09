@@ -27,14 +27,23 @@ export default function Footer() {
             <div className=" text-right text-base space-x-4 cursor-pointer">
               <a
                 href="https://www.facebook.com/cinecolombiaoficial"
+                rel="noreferrer"
                 target="_blank"
               >
                 <i className=" hover:text-blue-terciary fab fa-facebook-square"></i>
               </a>
-              <a href="https://twitter.com/Cine_Colombia" target="_blank">
+              <a
+                href="https://twitter.com/Cine_Colombia"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i className=" hover:text-blue-terciary fab fa-twitter"></i>
               </a>
-              <a href="https://www.instagram.com/cinecolombia/" target="_blank">
+              <a
+                href="https://www.instagram.com/cinecolombia/"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <i className=" hover:text-blue-terciary fab fa-instagram"></i>
               </a>
             </div>
@@ -66,14 +75,23 @@ export default function Footer() {
           <div className=" text-center pt-3 text-base space-x-4 cursor-pointer">
             <a
               href="https://www.facebook.com/cinecolombiaoficial"
+              rel="noreferrer"
               target="_blank"
             >
               <i className=" hover:text-blue-terciary fab fa-facebook-square"></i>
             </a>
-            <a href="https://twitter.com/Cine_Colombia" target="_blank">
+            <a
+              href="https://twitter.com/Cine_Colombia"
+              rel="noreferrer"
+              target="_blank"
+            >
               <i className=" hover:text-blue-terciary fab fa-twitter"></i>
             </a>
-            <a href="https://www.instagram.com/cinecolombia/" target="_blank">
+            <a
+              href="https://www.instagram.com/cinecolombia/"
+              rel="noreferrer"
+              target="_blank"
+            >
               <i className=" hover:text-blue-terciary fab fa-instagram"></i>
             </a>
           </div>

@@ -3,11 +3,12 @@ import CarouselTop from "./CarouselTop";
 import CarouselBottom from "./CarouselBottom";
 import Footer from "./Footer";
 
-const MainStructure = ({
+function MainStructure({
+  movies = [],
   showCarrouselTop = true,
   showCarrouselBot = true,
   children,
-}) => {
+}) {
   return (
     <>
       <div
@@ -17,7 +18,7 @@ const MainStructure = ({
       >
         <Navbar></Navbar>
         <section className="bg-white w-full lg:rounded-none rounded-t-3xl overflow-auto h-full scrollbar-none">
-          {showCarrouselTop && <CarouselTop />}
+          {showCarrouselTop && <CarouselTop movies={movies} />}
           {children}
           {showCarrouselBot && <CarouselBottom />}
           <Footer></Footer>
@@ -25,6 +26,6 @@ const MainStructure = ({
       </div>
     </>
   );
-};
+}
 
 export default MainStructure;

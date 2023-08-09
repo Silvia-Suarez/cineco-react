@@ -22,7 +22,7 @@ export default function Card({ data, others = false }) {
           className=" h-full font-roboto capitalize xl:w-80 w-64 px-5 py-4 flex flex-col tracking-wide"
         >
           <img
-            src={"https:" + data?.fields?.portada?.fields?.file?.url}
+            src={data?.fields?.portada?.fields?.file?.url}
             alt="Imagen-Pelicula-Otros"
             className="mx-auto w-full border rounded-md"
           />
@@ -37,9 +37,7 @@ export default function Card({ data, others = false }) {
               </p>
               <p>
                 Género{" "}
-                <span className="font-normal">
-                  {data?.fields?.clasificacion}
-                </span>
+                <span className="font-normal">{data?.fields?.genero}</span>
               </p>
             </div>
           </div>
