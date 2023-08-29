@@ -112,7 +112,7 @@ export default function Home() {
               <p className="text-lg font-roboto font-medium pb-10">PRONTO</p>
               <div className="grid grid-cols-3 xl:grid-cols-4 gap-y-5 xl:gap-x-6">
                 {moviesSooner.map((movie) => (
-                  <div key={movie?.fields?.id + "_otros"}>
+                  <div key={movie?.fields?.id + "_pronto"}>
                     <Card data={movie}></Card>
                   </div>
                 ))}
@@ -124,7 +124,7 @@ export default function Home() {
           </div>
           <div className=" bg-gray-principal tracking-wide text-xl font-noto px-6 xl:px-14 py-16">
             CINECO ALTERNATIVO
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 mb-10">
               <div className="w-1/2">
                 <p className=" pt-10 pb-5">Otros</p>
                 <div className=" grid grid-cols-2 gap-y-5 gap-x-6">
@@ -133,9 +133,6 @@ export default function Home() {
                       <Card data={movie} others={true}></Card>
                     </div>
                   ))}
-                </div>
-                <div className="ml-auto w-max py-8">
-                  <PrincipalButton />
                 </div>
               </div>
               <div className="w-1/2">
