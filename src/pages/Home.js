@@ -98,8 +98,8 @@ export default function Home() {
 
   return (
     <>
-      <MainStructure movies={moviesBillboard}>
-        <ErrorGenerator />
+      <MainStructure>
+        {/* <ErrorGenerator /> */}
         {/* <OptionsButton action={user}>Autenticar</OptionsButton> */}
         <section className="hidden lg:block">
           <div className="px-6 xl:px-14 py-16">

@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Glide from "@glidejs/glide";
 import React from "react";
 
 function CarouselTop(props) {
-  const [moviesCarousel, setMoviesCarousel] = useState([]);
   useEffect(() => {
-    function getImages() {
-      const filteredCarousel = props.movies?.filter(
-        (item) => item?.fields?.carrusel === true
-      );
-      setMoviesCarousel(filteredCarousel);
-    }
-    getImages();
-
     const glide = new Glide(".glide", {
       type: "carousel",
       perView: 5,
@@ -26,12 +17,10 @@ function CarouselTop(props) {
           perView: 3,
         },
       },
-
-      // Agrega otras opciones de configuración según tus necesidades
     });
     glide.mount();
     return () => glide.destroy();
-  }, [props.movies]);
+  }, []);
 
   return (
     <div className="glide lg:block hidden bg-gradient-to-b from-black to-white">
@@ -42,7 +31,7 @@ function CarouselTop(props) {
         <ul className="glide__slides text-center h-114">
           <li
             key={"image-carousel-top-1"}
-            className="glide__slide cuadros  h-100 my-auto "
+            className="glide__slide cuadros h-100 my-auto "
           >
             <img
               alt="Imagen-carusel-bot"

@@ -22,13 +22,13 @@ export default function Navbar({ signOut, authkey }) {
     async function checkUser() {
       try {
         const user = await Auth.currentAuthenticatedUser();
-        console.log("user: ", Auth);
+        console.log("user: ", Auth.user["username"]);
       } catch (error) {
         console.log("error: ", error);
       }
     }
     checkUser();
-  }, []);
+  }, [Auth?.user]);
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Navbar({ signOut, authkey }) {
               <SearchInput></SearchInput>
             </div>
             <div className="xl:ml-auto flex flex-col justify-center">
-              {authkey?.username ? (
+              {Auth?.user ? (
                 <button
                   className="flex cursor-pointer justify-center rounded-full py-3 px-6 font-roboto text-center text-sm font-medium tracking-wide bg-transparent border border-blue-principal text-blue-principal hover:text-white hover:bg-blue-principal"
                   onClick={signOut}
@@ -78,7 +78,7 @@ export default function Navbar({ signOut, authkey }) {
           />
         </div>
         <div className="w-1/3 flex justify-end pr-6">
-          {Auth ? (
+          {Auth?.user ? (
             <button
               className="flex cursor-pointer justify-center rounded-full py-3 px-6 font-roboto text-center text-sm font-medium tracking-wide bg-transparent border border-blue-principal text-blue-principal hover:text-white hover:bg-blue-principal"
               onClick={signOut}
