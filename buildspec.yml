@@ -12,4 +12,4 @@ phases:
       #- mv /codebuild/output/build/* /codebuild/output/build/  #mueve toda la carpeta que se crea build a la carpeta build en el pipeline
 
 artifacts:
-  files: '**/*'
+  files: '**/build/*'
