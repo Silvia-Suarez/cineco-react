@@ -1,25 +1,20 @@
-import Navbar from '../components/Navbar';
-import MainStructure from '../components/MainStructure';
-  import { Amplify } from "aws-amplify";
-  import awsconfig from "../aws-exports";
-  import {withAuthenticator } from "@aws-amplify/ui-react";
-  import '@aws-amplify/ui-react/styles.css';
-  Amplify.configure(awsconfig);
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Auth } from "aws-amplify";
+import "@aws-amplify/ui-react/styles.css";
 
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+function LoginPage() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    Auth.federatedSignIn();
+  }, []);
 
-function LoginPage({ signOut, user }) {  
-  return (
-    <>
-    <MainStructure showCarrouselBot={false} showCarrouselTop= {false} >
-
-    </MainStructure>
-      {/* <div className="App">
-        <p>key: {user.username}</p>
-      </div> */}
-    
-    </>
-  );
+  return <></>;
 }
 
-export default LoginPage;
+export default withAuthenticator(LoginPage, {
+  socialProviders: ["google", "facebook"],
+});
+// export default LoginPage;

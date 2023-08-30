@@ -6,11 +6,19 @@ import MobileCard from "../components/MobileCard";
 import SearchInput from "../components/Inputs/SearchInput";
 import { PrincipalButton, OptionsButton } from "../components/Buttons";
 import { useEffect, useState } from "react";
-
+import ErrorGenerator from "../components/errors/ErrorGenerator";
+import { Auth } from "aws-amplify";
 export default function Home() {
   const [moviesBillboard, setMoviesBillboard] = useState([]);
   const [moviesSooner, setMoviesSooner] = useState([]);
-
+  async function user() {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      console.log("user: ", user);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
   useEffect(() => {
     async function getMovies() {
       await client
@@ -91,6 +99,8 @@ export default function Home() {
   return (
     <>
       <MainStructure movies={moviesBillboard}>
+        <ErrorGenerator />
+        {/* <OptionsButton action={user}>Autenticar</OptionsButton> */}
         <section className="hidden lg:block">
           <div className="px-6 xl:px-14 py-16">
             <div>

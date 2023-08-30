@@ -2,11 +2,11 @@ import Navbar from "./Navbar";
 import CarouselTop from "./CarouselTop";
 import CarouselBottom from "./CarouselBottom";
 import Footer from "./Footer";
-import { Amplify } from "aws-amplify";
-import awsconfig from "../aws-exports";
-import {withAuthenticator } from "@aws-amplify/ui-react";
-import '@aws-amplify/ui-react/styles.css';
-Amplify.configure(awsconfig);
+// import { Amplify } from "aws-amplify";
+// import awsconfig from "../aws-exports";
+// import {withAuthenticator } from "@aws-amplify/ui-react";
+// import '@aws-amplify/ui-react/styles.css';
+// Amplify.configure(awsconfig);
 
 function MainStructure({
   movies = [],
@@ -35,7 +35,7 @@ function MainStructure({
   );
 }
 
-
-export default withAuthenticator(MainStructure, {
-  socialProviders: ["google", "facebook"],
-});
+export default MainStructure;
+// export default withAuthenticator(MainStructure, {
+//   socialProviders: ["google", "facebook"],
+// });
