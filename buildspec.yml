@@ -8,6 +8,8 @@ phases:
   build:
     commands:
       - npm run build
+      - mkdir build
+      - mv build/* build/  #mueve toda la carpeta que se crea build a la carpeta build en el pipeline
 
 artifacts:
   files: '**/*'

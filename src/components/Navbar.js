@@ -20,7 +20,7 @@ export default function Navbar({signOut, authkey}) {
           </div>
           <div className="xl:w-4/5 lg:flex hidden xl:pl-60 xl:pr-20 xl:py-1.5 ">
             <div className="flex space-x-2 xl:space-x-4">
-              <OptionsButton>Cartelera 2</OptionsButton>
+              <OptionsButton>Carteleras2</OptionsButton>
               <OptionsButton>Pronto</OptionsButton>
               <OptionsButton>Cineco Alternativo</OptionsButton>
               <OptionsButton>Comidas</OptionsButton>
