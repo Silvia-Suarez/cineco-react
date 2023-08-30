@@ -4,17 +4,13 @@ phases:
   install:
     commands:
       - npm install
-      - npm run build
-      - aws s3 sync build s3://cinecolombia-contenido/
+      
 
   build:
     commands:
-      #- npm run build
-      #- mkdir /codebuild/output/build
-      #- mv /codebuild/output/build/* /codebuild/output/build/  #mueve toda la carpeta que se crea build a la carpeta build en el pipel
-      #- ls build   # Running ls to inspect the contents of the build directory
-      #- aws s3 sync build s3://cinecolombia-contenido/ --delete 
-      #- aws s3 sync build s3://cinecolombia-contenido/
+      - npm run build
+      - aws s3 sync build s3://cinecolombia-contenido/ --delete
+      - aws s3 sync build s3://cinecolombia-contenido/ 
 
 artifacts:
-  files: '**/build/build/*'
+  files: '**/*'
