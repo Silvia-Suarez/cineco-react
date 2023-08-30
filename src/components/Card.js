@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Card({ data, others = false }) {
+  const navigate = useNavigate();
+
   const Label = ({ alert = false, children }) => {
     return (
       <>
@@ -44,9 +48,9 @@ export default function Card({ data, others = false }) {
         </div>
       ) : (
         <div
-          // onClick={() => router.push(`/movie-detail/${id}`)}
+          onClick={() => navigate(`/pelicula/${data?.fields?.titulo}`)}
           style={{ boxShadow: "0 0 10px rgba(0,0,0,.1)" }}
-          className=" h-full font-roboto capitalize w-80 px-5 py-4 flex flex-col rounded-md tracking-wide"
+          className=" h-full cursor-pointer font-roboto capitalize w-80 px-5 py-4 flex flex-col rounded-md tracking-wide"
         >
           <img
             src={"https:" + data?.fields?.portada?.fields?.file?.url}

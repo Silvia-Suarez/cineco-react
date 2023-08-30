@@ -2,12 +2,15 @@ import { useState } from "react";
 import { OptionsButton, SecondaryButton } from "./Buttons";
 import { useNavigate } from "react-router-dom";
 
+import { Auth } from "aws-amplify";
+
 export default function Login() {
   const [active, SetActive] = useState(false);
   const [hover, SetHover] = useState(false);
   const navigate = useNavigate();
-  function changePage() {
-    navigate("/login");
+
+  async function changePage() {
+    await Auth.federatedSignIn();
   }
   return (
     <>
@@ -57,9 +60,7 @@ export default function Login() {
             <div className="w-full h-2/3 bg-white">
               <div className="flex h-full flex-col px-20 justify-center space-y-5">
                 <OptionsButton action={changePage}>Ingresar</OptionsButton>
-                <SecondaryButton
-                // action={changePage}
-                >
+                <SecondaryButton action={changePage}>
                   Registrarse
                 </SecondaryButton>
               </div>
