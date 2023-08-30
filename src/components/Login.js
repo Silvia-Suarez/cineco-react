@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { OptionsButton, SecondaryButton } from "./Buttons";
-import { useNavigate } from "react-router-dom";
 
 import { Auth } from "aws-amplify";
 
 export default function Login() {
   const [active, SetActive] = useState(false);
   const [hover, SetHover] = useState(false);
-  const navigate = useNavigate();
 
   async function changePage() {
     await Auth.federatedSignIn();

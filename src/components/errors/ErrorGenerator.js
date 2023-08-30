@@ -13,7 +13,10 @@ const ErrorGenerator = () => {
 
   return (
     <div>
-      <button className="search-button" onClick={handleGenerateError}>
+      <button
+        className="rounded-3xl bg-blue-secondary text-white text-center"
+        onClick={handleGenerateError}
+      >
         Generar error
       </button>
     </div>
