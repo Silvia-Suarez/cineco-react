@@ -5,7 +5,10 @@ import BuyTickets from "../components/BuyTickets";
 
 export default function MovieDetails() {
   const { title } = useParams();
-  const rate = 7.2;
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  const rate = getRandomInt(11);
 
   const Label = ({ alert = false, children }) => {
     return (
