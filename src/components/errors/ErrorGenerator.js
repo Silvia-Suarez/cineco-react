@@ -12,9 +12,9 @@ const ErrorGenerator = () => {
   }
 
   return (
-    <div>
+    <div className="flex">
       <button
-        className="rounded-3xl bg-blue-secondary text-white text-center"
+        className="rounded-3xl hover:bg-blue-secondary mx-auto px-3 py-1.5 font-roboto text-sm text-white text-center"
         onClick={handleGenerateError}
       >
         Generar error

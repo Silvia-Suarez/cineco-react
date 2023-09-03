@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Glide from "@glidejs/glide";
 import React from "react";
 
-function CarouselTop(props) {
+function CarouselTop() {
   useEffect(() => {
     const glide = new Glide(".glide", {
       type: "carousel",

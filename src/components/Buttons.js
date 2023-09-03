@@ -12,11 +12,11 @@ const PrincipalButton = ({ action, children = "Ver todo" }) => {
   );
 };
 
-const OptionsButton = ({ active = false, action, children }) => {
+const OptionsButton = ({ active = false, children, ...props }) => {
   return (
     <>
       <div
-        onClick={() => action()}
+        {...props}
         className={`lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm ${
           active ? " bg-blue-secondary" : "bg-blue-principal"
         }`}

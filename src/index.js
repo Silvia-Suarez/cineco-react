@@ -7,7 +7,7 @@ import * as Sentry from "@sentry/react";
 
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
-
+import ReactGA from "react-ga4";
 Sentry.init({
   dsn: "https://8a1abda726ed110832329697ee6032fd@o4505791896485888.ingest.sentry.io/4505791908741120",
   integrations: [
@@ -27,6 +27,7 @@ Sentry.init({
 Amplify.configure(awsconfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+ReactGA.initialize("G-R9B4HGS1Y4");
 root.render(
   <React.StrictMode>
     <App />
@@ -36,4 +37,11 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const SendAnalytics = () => {
+  ReactGA.send({
+    hitType: "pageview",
+    page: window.location.pathname,
+  });
+};
+
+reportWebVitals(SendAnalytics);
