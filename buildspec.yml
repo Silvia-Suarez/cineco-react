@@ -16,8 +16,8 @@ phases:
       - npm run build
   post_build:
     commands:
-      - aws s3 cp --recursive --acl public-read ./build s3://cinecolombia-contenido/
-      - aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./build/index.html s3://cinecolombia-contenido/
+      - aws s3 cp --recursive --acl public-read ./build s3://cineco-contenido/
+      - aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./build/index.html s3://cineco-contenido/
       - aws cloudfront create-invalidation --distribution-id E2C28ZG6TFM70N --paths /index.html
 artifacts:
   files:
