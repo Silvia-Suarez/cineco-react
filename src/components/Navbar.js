@@ -1,4 +1,4 @@
-import { useNavigate, useRoutes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Auth } from "aws-amplify";
 
 import logo from "../assets/images/logo_cineco.svg";
@@ -9,7 +9,6 @@ import { useEffect } from "react";
 
 export default function Navbar({ signOut, authkey }) {
   const navigate = useNavigate();
-  const router = useRoutes();
 
   async function signOut() {
     try {
