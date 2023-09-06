@@ -1,6 +1,8 @@
 import MainStructure from "../components/MainStructure";
 import React from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
+
 import BuyTickets from "../components/BuyTickets";
 
 export default function MovieDetails() {
@@ -25,13 +27,22 @@ export default function MovieDetails() {
     );
   };
 
+  axios
+    .get("https://8rud6k9lwe.execute-api.us-east-1.amazonaws.com/api/boletas")
+    .then((response) => {
+      console.log("Datos de la respuesta:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error al obtener los datos:", error);
+    });
+
   return (
     <MainStructure showCarrouselBot={false} showCarrouselTop={false}>
       <section className="flex flex-col relative pt-14 pb-32  bg-gradient-to-b from-black to-50% from-50% to-white ">
-        <div className="absolute xl:h-130 xl:top-3 xl:left-14 lg:top-3 lg:left-10 lg:h-96">
+        <div className="absolute xl:h-130  border rounded-2xl w-96 xl:top-3 xl:left-14 lg:top-3 lg:left-10 lg:h-96">
           <img
             alt="Cineco-Peli"
-            src="https://archivos-cms.cinecolombia.com/images/_aliases/exhibition_poster/5/3/4/2/42435-3-esl-CO/9f3f93604ed4-warner_barbie_cinecol_480x670.jpg"
+            src=""
             className="shadow-black shadow-2xl rounded-2xl"
           ></img>
         </div>

@@ -44,18 +44,12 @@ export default function Navbar({ signOut, authkey }) {
           </div>
           <div className="xl:w-4/5 lg:flex hidden xl:pl-60 xl:pr-20 xl:py-1.5 ">
             <div className="flex space-x-2 xl:space-x-4">
-              <OptionsButton onClick={() => navigate("/#CARTELERA")}>
-                Cartelera
-              </OptionsButton>
-              <OptionsButton onClick={() => navigate("/#PRONTO")}>
-                Pronto
-              </OptionsButton>
-              <OptionsButton onClick={() => navigate("/#ALTERNATIVO")}>
+              <OptionsButton action="#CARTELERA">Cartelera</OptionsButton>
+              <OptionsButton action="#PRONTO">Pronto</OptionsButton>
+              <OptionsButton action="#ALTERNATIVO">
                 Cineco Alternativo
               </OptionsButton>
-              <OptionsButton onClick={() => navigate("/#CARTELERA")}>
-                Comidas
-              </OptionsButton>
+              <OptionsButton action="#CARTELERA">Comidas</OptionsButton>
             </div>
             <div className="flex flex-col px-8 justify-center">
               <SearchInput></SearchInput>
