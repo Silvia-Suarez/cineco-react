@@ -66,7 +66,7 @@ export default function Card({ data, others = false }) {
             </p>
             <div className=" text-xs pb-2 space-y-1">
               <p>Estreno: {data?.fields?.estreno}</p>
-              <p>Género: {data?.fields?.duracion}</p>
+              <p>Género: {data?.fields?.genero}</p>
             </div>
             <div className="w-full text-xs flex flex-wrap h-28">
               <Label
