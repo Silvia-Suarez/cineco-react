@@ -28,7 +28,9 @@ export default function MovieDetails() {
   };
 
   axios
-    .get("https://8rud6k9lwe.execute-api.us-east-1.amazonaws.com/api/boletas")
+    .get(
+      "https://q6v3l1utcf.execute-api.us-east-1.amazonaws.com/pelicula-test/api/pelicula?titulo=Barbie"
+    )
     .then((response) => {
       console.log("Datos de la respuesta:", response.data);
     })
