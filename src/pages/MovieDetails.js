@@ -28,9 +28,7 @@ export default function MovieDetails() {
   };
 
   axios
-    .get(
-      "https://q6v3l1utcf.execute-api.us-east-1.amazonaws.com/pelicula-test/api/pelicula?titulo=Barbie"
-    )
+    .get("https://k6i768dm9k.execute-api.us-east-1.amazonaws.com/movie")
     .then((response) => {
       console.log("Datos de la respuesta:", response.data);
     })
@@ -41,7 +39,7 @@ export default function MovieDetails() {
   return (
     <MainStructure showCarrouselBot={false} showCarrouselTop={false}>
       <section className="flex flex-col relative pt-14 pb-32  bg-gradient-to-b from-black to-50% from-50% to-white ">
-        <div className="absolute xl:h-130  border rounded-2xl w-96 xl:top-3 xl:left-14 lg:top-3 lg:left-10 lg:h-96">
+        <div className="absolute xl:h-130  border border-red-500 rounded-2xl lg:w-96 md:w-72 xl:top-3 xl:left-14 lg:top-3 lg:left-10 lg:h-96">
           <img
             alt="Cineco-Peli"
             src=""
