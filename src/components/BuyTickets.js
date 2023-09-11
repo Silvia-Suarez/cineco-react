@@ -1,15 +1,25 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Auth } from "aws-amplify";
+
 const BuyTickets = ({ functions, price }) => {
   const [step, setStep] = useState(0);
   const [date, setDate] = useState("");
   const [schedule, setSchedule] = useState("");
   const [tickets, setTickets] = useState(0);
-  function alertError() {
+  function alertNoSesionError() {
     Swal.fire({
       icon: "error",
       title: "Lo sentimos,",
       text: "Ya no hay funciones de esta película",
+    });
+  }
+  function alertNoSesionError() {
+    Swal.fire({
+      icon: "error",
+      title: "Noop,",
+      text: "No puedes comprar una boleta sin iniciar sesión",
+      footer: "Tampoco tan concucho, colabore",
     });
   }
   return (
@@ -139,7 +149,11 @@ const BuyTickets = ({ functions, price }) => {
           </div>
           <div
             onClick={() => {
-              functions.length === 0 ? alertError() : setStep(1);
+              Auth?.user
+                ? alertNoSesionError()
+                : functions.length === 0
+                ? alertError()
+                : setStep(1);
             }}
             className={`bg-blue-principal lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm`}
           >

@@ -4,8 +4,15 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import MovieDetails from "./pages/MovieDetails";
 import ErrorBoundary from "./components/errors/ErrorBoundary";
+import ReactGA from "react-ga4";
 
 function App() {
+  useEffect(() => {
+    ReactGA.gtag("event", "page_view", {
+      page_path: window.location.pathname + window.location.search,
+    });
+  }, []);
+
   return (
     <ErrorBoundary>
       <Router>
