@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { OptionsButton } from "./Buttons";
+import Swal from "sweetalert2";
 const BuyTickets = ({ functions, price }) => {
   const [step, setStep] = useState(0);
   const [date, setDate] = useState("");
   const [schedule, setSchedule] = useState("");
   const [tickets, setTickets] = useState(0);
+  function alertError() {
+    Swal.fire({
+      icon: "error",
+      title: "Lo sentimos,",
+      text: "Ya no hay funciones de esta película",
+    });
+  }
   return (
     <>
       {step === 2 ? (
@@ -59,6 +66,7 @@ const BuyTickets = ({ functions, price }) => {
             </label>
             <select
               id="date"
+              disabled={functions.length === 0}
               className="bg-blue-principal w-1/2 ml-auto text-white outline-none text-sm rounded-lg p-2.5"
               onChange={(e) => setDate(e.currentTarget.value)}
             >
@@ -85,6 +93,7 @@ const BuyTickets = ({ functions, price }) => {
             </label>
             <select
               id="hour"
+              disabled={functions.length === 0}
               className="bg-blue-principal w-1/2 ml-auto text-white outline-none text-sm rounded-lg p-2.5"
               onChange={(e) => setSchedule(e.currentTarget.value)}
             >
@@ -111,6 +120,7 @@ const BuyTickets = ({ functions, price }) => {
             </label>
             <select
               id="quantity"
+              disabled={functions.length === 0}
               className="bg-blue-principal w-1/2 ml-auto text-white outline-none text-sm rounded-lg p-2.5"
               onChange={(e) => setTickets(parseInt(e.currentTarget.value, 10))}
             >
@@ -128,7 +138,9 @@ const BuyTickets = ({ functions, price }) => {
             </select>
           </div>
           <div
-            onClick={() => setStep(1)}
+            onClick={() => {
+              functions.length === 0 ? alertError() : setStep(1);
+            }}
             className={`bg-blue-principal lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm`}
           >
             Comprar

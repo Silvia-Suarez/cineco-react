@@ -37,20 +37,13 @@ export default function Home() {
     getMovies();
   }, []);
 
-  const miSeccionRef = useRef("CARTELERA");
-
-  const scrollToMiSeccion = () => {
-    miSeccionRef.current.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <>
       <MainStructure>
         <ErrorGenerator />
         <section className="hidden lg:block">
-          <button onClick={() => scrollToMiSeccion()}>export default</button>
           <div className="px-6 xl:px-14 py-16">
             <div>
-              <a ref={miSeccionRef}></a>
               <p
                 id="CARTELERA"
                 className="text-lg font-roboto font-medium pb-10"
