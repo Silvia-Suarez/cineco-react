@@ -7,7 +7,7 @@ const BuyTickets = ({ functions, price }) => {
   const [date, setDate] = useState("");
   const [schedule, setSchedule] = useState("");
   const [tickets, setTickets] = useState(0);
-  function alertNoSesionError() {
+  function alertError() {
     Swal.fire({
       icon: "error",
       title: "Lo sentimos,",
