@@ -21,11 +21,16 @@ const Label = ({ alert = false, children }) => {
 };
 
 export default function MovieDetails() {
+  const [step, setStep] = useState(0);
   const { title } = useParams();
-  const rate = getRandomInt(11);
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
+  const [rate, setRate] = useState(0);
+  useEffect(() => {
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    const rate = getRandomInt(11);
+    setRate(rate);
+  }, []);
 
   const [movie, setMovie] = useState({});
   const [functions, setFunctions] = useState([]);
@@ -53,27 +58,12 @@ export default function MovieDetails() {
       .then((response) => {
         setFunctions(response.data.funciones);
         setPrice(parseInt(response.data.precio, 10));
-        console.log("Datos de la respuesta:", response.data);
       })
       .catch((error) => {
         console.error("Error al obtener los datos:", error);
       });
   }, [title]);
 
-  // const data = {
-  //   nombrePelicula: "Barbie",
-  //   cantidad: "5",
-  //   funcion: "12pm",
-  //   precioTotal: 20000,
-  // };
-  // axios
-  //   .post("https://k6i768dm9k.execute-api.us-east-1.amazonaws.com/ticket", data)
-  //   .then((response) => {
-  //     console.log("Registro exitoso", response);
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error al enviar los datos:", error);
-  //   });
   return (
     <MainStructure showCarrouselBot={false} showCarrouselTop={false}>
       <section className="flex flex-col relative pt-14  bg-gradient-to-b from-black to-50% from-50% to-white ">
@@ -139,62 +129,158 @@ export default function MovieDetails() {
                 <p className="text-4xl pt-5 text-center font-medium ">
                   COMPRAR BOLETAS
                 </p>
-                <BuyTickets functions={functions} price={price}></BuyTickets>
+                <BuyTickets
+                  step={step}
+                  setStep={setStep}
+                  functions={functions}
+                  price={price}
+                ></BuyTickets>
               </div>
             </div>
             <div className="flex mx-auto text-2xl font-roboto pt-5">
               <p className=" font-medium mr-10 text-white">Calificación: </p>
               <div className="flex space-x-1">
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 1 ? "text-yellow-300" : "text-gray-300"
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 2 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    console.log(step);
+                    step === 2 ? setRate((rate + 1) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 1 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 3 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 2) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 2 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 4 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 3) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 3 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 5 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 4) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 4 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 6 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 5) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 5 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 7 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 6) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 6 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 8 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 7) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 7 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate >= 9 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 8) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 8 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
-                <i
-                  className={`fas fa-star my-auto ${
-                    rate === 10 ? "text-yellow-300" : "text-gray-300"
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 9) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate >= 9 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
+                <button
+                  className={`${
+                    step === 2 ? "cursor-pointer" : "cursor-default"
                   }`}
-                ></i>{" "}
+                  onClick={() => {
+                    step === 2 ? setRate((rate + 10) / 2) : setRate(rate);
+                  }}
+                >
+                  <i
+                    className={`fas fa-star my-auto ${
+                      rate === 10 ? "text-yellow-300" : "text-gray-300"
+                    }`}
+                  />
+                </button>{" "}
                 <p className="ml-2 font-medium text-gray-500 dark:text-gray-400">
                   {rate} de 10
                 </p>

@@ -2,8 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { Auth } from "aws-amplify";
 
-const BuyTickets = ({ functions, price }) => {
-  const [step, setStep] = useState(0);
+const BuyTickets = ({ functions, price, step, setStep }) => {
   const [date, setDate] = useState("");
   const [schedule, setSchedule] = useState("");
   const [tickets, setTickets] = useState(0);
@@ -31,12 +30,12 @@ const BuyTickets = ({ functions, price }) => {
             <p className="font-roboto font-medium pt-8 text-sm">
               Su compra fue realizada con éxito
             </p>
-            <a
+            <button
               className=" cursor-pointer text-xs underline font-noto font-medium text-blue-extra"
               onClick={() => setStep(0)}
             >
               Comprar nuevamente
-            </a>
+            </button>
           </div>
         </>
       ) : step === 1 ? (

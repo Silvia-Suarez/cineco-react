@@ -1,6 +1,5 @@
 import client from "../contentful";
-import { Auth } from "aws-amplify";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { others, ophera, ballet, theatre } from "../utils/components/data";
 import Card from "../components/Card";
