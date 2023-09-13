@@ -19,16 +19,16 @@ export default function Navbar({ signOut, authkey }) {
   }
 
   useEffect(() => {
-    async function checkUser() {
+    function checkUser() {
       try {
-        await Auth.currentAuthenticatedUser();
+        Auth.currentAuthenticatedUser();
         return true;
       } catch (error) {
         return false;
       }
     }
     setUserAuth(checkUser());
-  }, [Auth?.user]);
+  }, [Auth?.user, Auth, OptionsButton]);
 
   return (
     <>
