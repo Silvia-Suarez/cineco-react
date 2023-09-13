@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const PrincipalButton = ({ action, children = "Ver todo" }) => {
   return (
     <>
@@ -13,9 +15,14 @@ const PrincipalButton = ({ action, children = "Ver todo" }) => {
 };
 
 const OptionsButton = ({ active = false, children, action }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <button onClick={() => action()}>
+      <button
+        onClick={() => {
+          typeof action === "string" ? navigate(action) : action();
+        }}
+      >
         <div
           className={`lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm ${
             active ? " bg-blue-secondary" : "bg-blue-principal"
