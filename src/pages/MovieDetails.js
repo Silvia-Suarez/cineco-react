@@ -22,6 +22,8 @@ const Label = ({ alert = false, children }) => {
 
 export default function MovieDetails() {
   const [step, setStep] = useState(0);
+  const [bought, setBought] = useState(0);
+  const [click, setClick] = useState(0);
   const { title } = useParams();
   const [rate, setRate] = useState(0);
   useEffect(() => {
@@ -132,6 +134,8 @@ export default function MovieDetails() {
                 <BuyTickets
                   step={step}
                   setStep={setStep}
+                  setBought={setBought}
+                  bought={bought}
                   functions={functions}
                   price={price}
                 ></BuyTickets>
@@ -142,11 +146,15 @@ export default function MovieDetails() {
               <div className="flex space-x-1">
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    console.log(step);
-                    step === 2 ? setRate((rate + 1) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 1) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -157,10 +165,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 2) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 2) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -171,10 +184,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 3) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 3) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -185,10 +203,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 4) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 4) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -199,10 +222,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 5) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 5) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -213,10 +241,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 6) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 6) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -227,10 +260,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 7) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 7) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -241,10 +279,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 8) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 8) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -255,10 +298,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 9) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 9) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i
@@ -269,10 +317,15 @@ export default function MovieDetails() {
                 </button>{" "}
                 <button
                   className={`${
-                    step === 2 ? "cursor-pointer" : "cursor-default"
+                    bought > 0 && click === 0
+                      ? "cursor-pointer"
+                      : "cursor-default"
                   }`}
                   onClick={() => {
-                    step === 2 ? setRate((rate + 10) / 2) : setRate(rate);
+                    bought > 0 && click === 0
+                      ? setRate((rate + 10) / 2)
+                      : setRate(rate);
+                    setClick(1);
                   }}
                 >
                   <i

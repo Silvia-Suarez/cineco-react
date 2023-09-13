@@ -2,10 +2,24 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { Auth } from "aws-amplify";
 
-const BuyTickets = ({ functions, price, step, setStep }) => {
+const BuyTickets = ({ functions, price, step, setStep, setBought, bought }) => {
   const [date, setDate] = useState("");
   const [schedule, setSchedule] = useState("");
   const [tickets, setTickets] = useState(0);
+  function alertSucces() {
+    Swal.fire({
+      icon: "success",
+      title: "Súper, ahaora puedes calificar la película",
+      text: "Solo se te activará una vez, por lo tanto, escoge sabiamente",
+    });
+  }
+  function alertVoid() {
+    Swal.fire({
+      icon: "question",
+      title: "¿No olvidas algo?",
+      html: "Aún hay campos vaciós <br> Por favor completa todos los campos",
+    });
+  }
   function alertError() {
     Swal.fire({
       icon: "error",
@@ -32,7 +46,12 @@ const BuyTickets = ({ functions, price, step, setStep }) => {
             </p>
             <button
               className=" cursor-pointer text-xs underline font-noto font-medium text-blue-extra"
-              onClick={() => setStep(0)}
+              onClick={() => {
+                setStep(0);
+                setDate("");
+                setSchedule("");
+                setTickets(0);
+              }}
             >
               Comprar nuevamente
             </button>
@@ -56,7 +75,11 @@ const BuyTickets = ({ functions, price, step, setStep }) => {
                 Cancelar
               </button>
               <button
-                onClick={() => setStep(2)}
+                onClick={() => {
+                  setStep(2);
+                  setBought(bought + 1);
+                  alertSucces();
+                }}
                 className={`bg-blue-principal lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm`}
               >
                 Aceptar
@@ -149,10 +172,12 @@ const BuyTickets = ({ functions, price, step, setStep }) => {
           <div
             onClick={() => {
               Auth?.user
-                ? alertNoSesionError()
-                : functions.length === 0
-                ? alertError()
-                : setStep(1);
+                ? functions.length === 0
+                  ? alertError()
+                  : (date === "") | (schedule === "") | (tickets === 0)
+                  ? alertVoid()
+                  : setStep(1)
+                : alertNoSesionError();
             }}
             className={`bg-blue-principal lg:w-auto w-full py-3 px-4 tracking-wide flex flex-col text-center cursor-pointer justify-center font-roboto text-white hover:bg-blue-secondary xl:rounded-full rounded-2xl text-xs xl:text-sm`}
           >
