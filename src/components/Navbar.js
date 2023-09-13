@@ -5,11 +5,11 @@ import logo from "../assets/images/logo_cineco.svg";
 import SearchInput from "./Inputs/SearchInput";
 import { OptionsButton } from "./Buttons";
 import Login from "./Login";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar({ signOut, authkey }) {
   const navigate = useNavigate();
-
+  const [userAuth, setUserAuth] = useState(false);
   async function signOut() {
     try {
       await Auth.signOut();
@@ -21,13 +21,13 @@ export default function Navbar({ signOut, authkey }) {
   useEffect(() => {
     async function checkUser() {
       try {
-        const user = await Auth.currentAuthenticatedUser();
-        console.log("user: ", Auth.user["username"]);
+        await Auth.currentAuthenticatedUser();
+        return true;
       } catch (error) {
-        console.log("error: ", error);
+        return false;
       }
     }
-    checkUser();
+    setUserAuth(checkUser());
   }, [Auth?.user]);
 
   return (
@@ -80,7 +80,7 @@ export default function Navbar({ signOut, authkey }) {
           />
         </div>
         <div className="w-1/3 flex justify-end pr-6">
-          {Auth?.user ? (
+          {userAuth ? (
             <button
               className="flex cursor-pointer justify-center rounded-full py-3 px-6 font-roboto text-center text-sm font-medium tracking-wide bg-transparent border border-blue-principal text-blue-principal hover:text-white hover:bg-blue-principal"
               onClick={signOut}
